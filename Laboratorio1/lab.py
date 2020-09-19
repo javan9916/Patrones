@@ -16,27 +16,27 @@ def menuFruta():
         opt = input("Opción: ")
 
         if opt == '1': #banano
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\banano.png"
+            archivo = "Laboratorio1\\frutas\\banano.png"
             menuTran(archivo)
             break
         elif opt == '2': #sandia
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\sandia.png"
+            archivo = "Laboratorio1\\frutas\\sandia.png"
             menuTran(archivo)
             break
         elif opt == '3': #cereza
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\cereza.png"
+            archivo = "Laboratorio1\\frutas\\cereza.png"
             menuTran(archivo)
             break
         elif opt == '4': #durazno
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\durazno.png"
+            archivo = "Laboratorio1\\frutas\\durazno.png"
             menuTran(archivo)
             break
         elif opt == '5': #mandarina
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\mandarina.png"
+            archivo = "Laboratorio1\\frutas\\mandarina.png"
             menuTran(archivo)
             break
         elif opt == '6': #rambutan
-            archivo = "C:\\Users\\Javier\\Patrones\\Laboratorio1\\frutas\\rambutan.png"
+            archivo = "Laboratorio1\\frutas\\rambutan.png"
             menuTran(archivo)
             break
         elif opt == '0':
