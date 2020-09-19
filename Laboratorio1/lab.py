@@ -1,6 +1,4 @@
 import cv2
-import numpy as np
-from matplotlib import pyplot as plt
 
 def menu():
     print("------ Transformación de imágenes con OpenCV ------")
