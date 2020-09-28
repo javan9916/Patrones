@@ -1,4 +1,5 @@
 import cv2
+from PIL import Image, ImageOps  
 import math
 import numpy as np
 
@@ -8,7 +9,11 @@ def menu():
     print("------ Ejercicios ------")
     print("Seleccione su opción: ")
     print("1) Color Balance")
+<<<<<<< HEAD
     print("2) Green Screen Matting")
+=======
+    print("2) Pixel Diff")
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
     print("3) Photo Effects")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -19,7 +24,11 @@ def menu():
         if opt == '1':
             color_balance()
             break
+<<<<<<< HEAD
         elif opt == '2':
+=======
+        if opt == '2':
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
             pixeldiff()
             break
         elif opt == '3':
@@ -94,7 +103,11 @@ def pixeldiff():
     cv2.imshow("Difference", canvas)
     cv2.waitKey(0)
     return
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
 def color_balance():
     print("Inserte los porcentajes de cada color: ")
 
@@ -108,16 +121,81 @@ def color_balance():
     cv2.imshow("After", out)
     cv2.waitKey(0)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
 def photo_effects():
+    print("Elija un efecto: ")
+    print("1) Contraste")
+    print("2) Solarize")
+    print("3) Emboss")
+    print("4) Sharpened")
+    opt = input("Opción: ")
+
+    if opt == '1':
+        bright = 255
+        contrast = 140
     
-    new_image = np.zeros(img.shape, img.dtype)
-    img.convertTo(new_image, -1, 2, 0)
+        new_image = apply_brightness_contrast(img, bright, contrast)
+        
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
+    
+    elif opt == '2':
+        img1 = Image.open("EjerciciosSemana4/image1.jpg")  
+        img2 = ImageOps.solarize(img1, threshold = 130)  
+        img2.show() 
+    
+    elif opt == '3':
+        kernel = np.array([[0,-1,-1],
+                            [1,0,-1],
+                            [1,1,0]])
+        new_image = cv2.filter2D(img, -1, kernel)
 
-    cv2.imshow('Original Image', img)
-    cv2.imshow('New Image', new_image)
-    # Wait until user press some key
-    cv2.waitKey()
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
 
+    elif opt == '4':
+        kernel = np.array([[-1, -1, -1], 
+                            [-1, 9, -1], 
+                            [-1, -1, -1]])
+        new_image = cv2.filter2D(img, -1, kernel)
+
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
+ 
+def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
+    brightness = map(brightness, 0, 510, -255, 255)
+    contrast = map(contrast, 0, 254, -127, 127)
+ 
+    if brightness != 0:
+        if brightness > 0:
+            shadow = brightness
+            highlight = 255
+        else:
+            shadow = 0
+            highlight = 255 + brightness
+        alpha_b = (highlight - shadow)/255
+        gamma_b = shadow
+ 
+        buf = cv2.addWeighted(input_img, alpha_b, input_img, 0, gamma_b)
+    else:
+        buf = input_img.copy()
+ 
+    if contrast != 0:
+        f = float(131 * (contrast + 127)) / (127 * (131 - contrast))
+        alpha_c = f
+        gamma_c = 127*(1-f)
+ 
+        buf = cv2.addWeighted(buf, alpha_c, buf, 0, gamma_c)
+ 
+    return buf
+ 
+def map(x, in_min, in_max, out_min, out_max):
+    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
 menu()
