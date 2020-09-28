@@ -78,7 +78,7 @@ def menuTran(archivo):
             rotarImagen(archivo)
             break
         elif opt == '0':
-            menuFruta(archivo)
+            menuFruta()
             break
         else:
             print("Esa opción no existe")
@@ -98,6 +98,7 @@ def region(archivo):
     cv2.imshow("Region", roi)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    guardar(roi, 2)
     menuFruta()
 
 def redimensionar(archivo):
@@ -114,6 +115,7 @@ def redimensionar(archivo):
     cv2.imshow("Redimension", resized)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    guardar(resized, 4)
     menuFruta()
 
 def suavizar(archivo):
@@ -128,6 +130,7 @@ def suavizar(archivo):
     cv2.imshow("Suavizado", blurred)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    guardar(blurred, 6)
     menuFruta()
 
 def getPixel(archivo):
@@ -156,6 +159,7 @@ def resizeLibre(archivo):
     cv2.imshow("Resize Libre", resized)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    guardar(resized, 3)
     menuFruta()
 
 def rotarImagen(archivo):
@@ -174,6 +178,23 @@ def rotarImagen(archivo):
     cv2.imshow("Rotado", rotated)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    guardar(rotated, 5)
     menuFruta()
+
+
+def guardar(imagen, tipo):
+    if tipo == 1:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info1.png', imagen)
+    elif tipo == 2:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info2.png', imagen)
+    elif tipo == 3:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info3.png', imagen)
+    elif tipo == 4:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info4.png', imagen)
+    elif tipo == 5:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info5.png', imagen)
+    elif tipo == 6:
+        cv2.imwrite('C:\\Users\\carlo\\OneDrive\\Escritorio\\Info6.png', imagen)
+
 
 menuFruta()
