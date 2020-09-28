@@ -1,4 +1,5 @@
 import cv2
+from PIL import Image, ImageOps  
 import math
 import numpy as np
 
@@ -109,14 +110,47 @@ def color_balance():
     cv2.waitKey(0)
 
 def photo_effects():
-    bright = 255
-    contrast = 140
- 
-    new_image = apply_brightness_contrast(img,bright,contrast)
+    print("Elija un efecto: ")
+    print("1) Contraste")
+    print("2) Solarize")
+    print("3) Emboss")
+    print("4) Sharpened")
+    opt = input("Opción: ")
 
-    cv2.imshow('Original Image', img)
-    cv2.imshow('New Image', new_image)
-    cv2.waitKey(0)   
+    if opt == '1':
+        bright = 255
+        contrast = 140
+    
+        new_image = apply_brightness_contrast(img, bright, contrast)
+        
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
+    
+    elif opt == '2':
+        img1 = Image.open("EjerciciosSemana4/image1.jpg")  
+        img2 = ImageOps.solarize(img1, threshold = 130)  
+        img2.show() 
+    
+    elif opt == '3':
+        kernel = np.array([[0,-1,-1],
+                            [1,0,-1],
+                            [1,1,0]])
+        new_image = cv2.filter2D(img, -1, kernel)
+
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
+
+    elif opt == '4':
+        kernel = np.array([[-1, -1, -1], 
+                            [-1, 9, -1], 
+                            [-1, -1, -1]])
+        new_image = cv2.filter2D(img, -1, kernel)
+
+        cv2.imshow('Original Image', img)
+        cv2.imshow('New Image', new_image)
+        cv2.waitKey(0)
  
 def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
     brightness = map(brightness, 0, 510, -255, 255)
