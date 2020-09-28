@@ -2,12 +2,13 @@ import cv2
 import math
 import numpy as np
 
-img = cv2.imread("EjerciciosSemana4/image1.jpg")
+img = cv2.imread("EjerciciosSemana4\\2image1.jpg")
 
 def menu():
     print("------ Ejercicios ------")
     print("Seleccione su opción: ")
     print("1) Color Balance")
+    print("2) Green Screen Matting")
     print("3) Photo Effects")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -17,6 +18,9 @@ def menu():
 
         if opt == '1':
             color_balance()
+            break
+        elif opt == '2':
+            pixeldiff()
             break
         elif opt == '3':
             photo_effects()
@@ -74,11 +78,10 @@ def simplest_cb(img, percent_list):
 
     return cv2.merge(out_channels)
 
-<<<<<<< HEAD
 def pixeldiff():
 
-    img1 = cv2.imread("EjerciciosSemana4/verdeVacio.png")
-    img2 = cv2.imread("EjerciciosSemana4/verdeMano.png")
+    img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
+    img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
     diff = cv2.absdiff(img1, img2)
     mask = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
 
@@ -91,10 +94,9 @@ def pixeldiff():
     cv2.imshow("Difference", canvas)
     cv2.waitKey(0)
     return
-=======
+
 def color_balance():
     print("Inserte los porcentajes de cada color: ")
->>>>>>> ea4913562d04a810d14746d89d2ef83980a7123b
 
     cyan = int(input("Cyan: "))
     magenta = int(input("Magenta: "))
@@ -106,13 +108,7 @@ def color_balance():
     cv2.imshow("After", out)
     cv2.waitKey(0)
 
-<<<<<<< HEAD
-cv2.imshow("before", img)
-cv2.imshow("after", out)
-cv2.waitKey(0)
 
-pixeldiff()
-=======
 def photo_effects():
     
     new_image = np.zeros(img.shape, img.dtype)
@@ -125,4 +121,3 @@ def photo_effects():
 
 
 menu()
->>>>>>> ea4913562d04a810d14746d89d2ef83980a7123b
