@@ -88,14 +88,43 @@ def color_balance():
     cv2.waitKey(0)
 
 def photo_effects():
-    
-    new_image = np.zeros(img.shape, img.dtype)
-    img.convertTo(new_image, -1, 2, 0)
+    bright = 255
+    contrast = 140
+ 
+    new_image = apply_brightness_contrast(img,bright,contrast)
 
     cv2.imshow('Original Image', img)
     cv2.imshow('New Image', new_image)
-    # Wait until user press some key
-    cv2.waitKey()
-
+    cv2.waitKey(0)   
+ 
+def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
+    brightness = map(brightness, 0, 510, -255, 255)
+    contrast = map(contrast, 0, 254, -127, 127)
+ 
+    if brightness != 0:
+        if brightness > 0:
+            shadow = brightness
+            highlight = 255
+        else:
+            shadow = 0
+            highlight = 255 + brightness
+        alpha_b = (highlight - shadow)/255
+        gamma_b = shadow
+ 
+        buf = cv2.addWeighted(input_img, alpha_b, input_img, 0, gamma_b)
+    else:
+        buf = input_img.copy()
+ 
+    if contrast != 0:
+        f = float(131 * (contrast + 127)) / (127 * (131 - contrast))
+        alpha_c = f
+        gamma_c = 127*(1-f)
+ 
+        buf = cv2.addWeighted(buf, alpha_c, buf, 0, gamma_c)
+ 
+    return buf
+ 
+def map(x, in_min, in_max, out_min, out_max):
+    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
 menu()
