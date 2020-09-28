@@ -5,6 +5,8 @@ import numpy as np
 
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
+img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
+img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
 
 def menu():
     print("------ Ejercicios ------")
@@ -12,6 +14,7 @@ def menu():
     print("1) Color Balance")
     print("2) Green Screen Matting")
     print("3) Photo Effects")
+    print("4) Histogram Equalization")
     print("5) Image Resampling")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -27,6 +30,9 @@ def menu():
             break
         elif opt == '3':
             photo_effects()
+            break
+        elif opt == '4':
+            histogram()
             break
         elif opt == '5':
             resampling()
@@ -85,8 +91,6 @@ def simplest_cb(img, percent_list):
     return cv2.merge(out_channels)
 
 def pixeldiff():
-    img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
-    img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
     diff = cv2.absdiff(img1, img2)
     mask = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
 
@@ -187,9 +191,12 @@ def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
 def histogram():
-    equ = cv2.equalizeHist(img)
-    
-    cv2.imshow('Histogram', equ)
+    gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+    equalized = cv2.equalizeHist(gray)
+
+    cv2.imshow('Gray', gray)
+    cv2.imshow('Histogram', equalized)
+    cv2.waitKey(0)
 
 def resampling():
     print("Elija una opción: ")
