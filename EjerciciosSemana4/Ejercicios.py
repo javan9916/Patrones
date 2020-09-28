@@ -2,7 +2,7 @@ import cv2
 import math
 import numpy as np
 
-img = cv2.imread('EjerciciosSemana4\\image1.jpg')
+img = cv2.imread("EjerciciosSemana4/image1.jpg")
 
 
 def apply_mask(matrix, mask, fill_value):
@@ -53,6 +53,22 @@ def simplest_cb(img, percent_list):
 
     return cv2.merge(out_channels)
 
+def pixeldiff():
+
+    img1 = cv2.imread("EjerciciosSemana4/verdeVacio.png")
+    img2 = cv2.imread("EjerciciosSemana4/verdeMano.png")
+    diff = cv2.absdiff(img1, img2)
+    mask = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+
+    th = 1
+    imask =  mask>th
+
+    canvas = np.zeros_like(img2, np.uint8)
+    canvas[imask] = img2[imask]
+
+    cv2.imshow("Difference", canvas)
+    cv2.waitKey(0)
+    return
 
 print("Inserte los porcentajes de cada color: ")
 
@@ -65,3 +81,5 @@ out = simplest_cb(img, [yellow, magenta, cyan])
 cv2.imshow("before", img)
 cv2.imshow("after", out)
 cv2.waitKey(0)
+
+pixeldiff()
