@@ -3,7 +3,12 @@ from PIL import Image, ImageOps
 import math
 import numpy as np
 
+<<<<<<< HEAD
+img = cv2.imread("EjerciciosSemana4\\image1.jpg")
+apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
+=======
 img = cv2.imread("EjerciciosSemana4\\2image1.jpg")
+>>>>>>> 7a96fd24e992a3f2943f09f4cfe3ddffa44684d2
 
 def menu():
     print("------ Ejercicios ------")
@@ -11,6 +16,7 @@ def menu():
     print("1) Color Balance")
     print("2) Green Screen Matting")
     print("3) Photo Effects")
+    print("5) Image Resampling")
     print("0) Salir")
     print("---------------------------------------------------")
 
@@ -25,6 +31,9 @@ def menu():
             break
         elif opt == '3':
             photo_effects()
+            break
+        elif opt == '5':
+            resampling()
             break
         elif opt == '0':
             break
@@ -181,8 +190,43 @@ def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
 def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
+<<<<<<< HEAD
 def histogram():
     equ = cv.equalizeHist(img)
     
     cv2.imshow('Histogram', equ)
+=======
+def resampling():
+    print("Elija una opción: ")
+    print("1) Interpolación")
+    print("2) Diezmar")
+    opt = input("Opción: ")
+
+    if opt == '1':
+        interpolation()
+    elif opt == '2':
+        decimating()
+
+def decimating():
+    scale_ratio = 0.6
+    img_resized = cv2.resize(img, None, fx=scale_ratio, fy=scale_ratio, interpolation=cv2.INTER_CUBIC)
+
+    scale_ratio = 1.8
+    low_res = cv2.resize(img_resized, None, fx=scale_ratio, fy=scale_ratio, interpolation=cv2.INTER_CUBIC)
+
+    cv2.imshow('Original', img)
+    cv2.imshow('Low Res', low_res)
+    cv2.waitKey(0)
+
+def interpolation():
+    near_img = cv2.resize(apple,None, fx = 10, fy = 10, interpolation = cv2.INTER_NEAREST)
+    bilinear_img = cv2.resize(apple,None, fx = 10, fy = 10, interpolation = cv2.INTER_LINEAR)
+    bicubic_img = cv2.resize(apple,None, fx = 10, fy = 10, interpolation = cv2.INTER_CUBIC)
+
+    cv2.imshow('Nearest Neighbour', near_img)
+    cv2.imshow('Bilinear', bilinear_img)
+    cv2.imshow('Bicubic', bicubic_img)
+    cv2.waitKey(0)
+
+>>>>>>> 7b9631ab61bc3d6b0c1cb1c0e8a126745b3210cb
 menu()
