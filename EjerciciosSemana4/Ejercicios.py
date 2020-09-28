@@ -3,14 +3,22 @@ from PIL import Image, ImageOps
 import math
 import numpy as np
 
+<<<<<<< HEAD
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
+=======
+img = cv2.imread("EjerciciosSemana4\\2image1.jpg")
+>>>>>>> 7a96fd24e992a3f2943f09f4cfe3ddffa44684d2
 
 def menu():
     print("------ Ejercicios ------")
     print("Seleccione su opción: ")
     print("1) Color Balance")
+<<<<<<< HEAD
+    print("2) Green Screen Matting")
+=======
     print("2) Pixel Diff")
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
     print("3) Photo Effects")
     print("5) Image Resampling")
     print("0) Salir")
@@ -22,7 +30,11 @@ def menu():
         if opt == '1':
             color_balance()
             break
+<<<<<<< HEAD
+        elif opt == '2':
+=======
         if opt == '2':
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
             pixeldiff()
             break
         elif opt == '3':
@@ -86,8 +98,8 @@ def simplest_cb(img, percent_list):
 
 def pixeldiff():
 
-    img1 = cv2.imread("EjerciciosSemana4/verdeVacio.png")
-    img2 = cv2.imread("EjerciciosSemana4/verdeMano.png")
+    img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
+    img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
     diff = cv2.absdiff(img1, img2)
     mask = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
 
@@ -100,7 +112,11 @@ def pixeldiff():
     cv2.imshow("Difference", canvas)
     cv2.waitKey(0)
     return
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
 def color_balance():
     print("Inserte los porcentajes de cada color: ")
 
@@ -114,6 +130,10 @@ def color_balance():
     cv2.imshow("After", out)
     cv2.waitKey(0)
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1a582e004608d0d9fa56ce5532d595b2e1b504fc
 def photo_effects():
     print("Elija un efecto: ")
     print("1) Contraste")
