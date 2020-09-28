@@ -4,6 +4,27 @@ import numpy as np
 
 img = cv2.imread('EjerciciosSemana4\\image1.jpg')
 
+def menu():
+    print("------ Ejercicios ------")
+    print("Seleccione su opción: ")
+    print("1) Color Balance")
+    print("3) Photo Effects")
+    print("0) Salir")
+    print("---------------------------------------------------")
+
+    while True:
+        opt = input("Opción: ")
+
+        if opt == '1':
+            color_balance()
+            break
+        elif opt == '3':
+            photo_effects()
+            break
+        elif opt == '0':
+            break
+        else:
+            print("Esa opción no existe")
 
 def apply_mask(matrix, mask, fill_value):
     masked = np.ma.array(matrix, mask=mask, fill_value=fill_value)
@@ -53,15 +74,28 @@ def simplest_cb(img, percent_list):
 
     return cv2.merge(out_channels)
 
+def color_balance():
+    print("Inserte los porcentajes de cada color: ")
 
-print("Inserte los porcentajes de cada color: ")
+    cyan = int(input("Cyan: "))
+    magenta = int(input("Magenta: "))
+    yellow = int(input("Yellow: "))
 
-cyan = int(input("Cyan: "))
-magenta = int(input("Magenta: "))
-yellow = int(input("Yellow: "))
+    out = simplest_cb(img, [yellow, magenta, cyan])
 
-out = simplest_cb(img, [yellow, magenta, cyan])
+    cv2.imshow("Before", img)
+    cv2.imshow("After", out)
+    cv2.waitKey(0)
 
-cv2.imshow("before", img)
-cv2.imshow("after", out)
-cv2.waitKey(0)
+def photo_effects():
+    
+    new_image = np.zeros(img.shape, img.dtype)
+    img.convertTo(new_image, -1, 2, 0)
+
+    cv2.imshow('Original Image', img)
+    cv2.imshow('New Image', new_image)
+    # Wait until user press some key
+    cv2.waitKey()
+
+
+menu()
