@@ -186,6 +186,11 @@ def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
 def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
+def histogram():
+    equ = cv2.equalizeHist(img)
+    
+    cv2.imshow('Histogram', equ)
+
 def resampling():
     print("Elija una opción: ")
     print("1) Interpolación")
