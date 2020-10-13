@@ -3,8 +3,15 @@ from PIL import Image, ImageOps
 import math
 import numpy as np
 
+<<<<<<< HEAD
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
+=======
+apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
+img = cv2.imread("EjerciciosSemana4\\image1.jpg")
+img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
+img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
+>>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
 
 def menu():
     print("------ Ejercicios ------")
@@ -12,7 +19,11 @@ def menu():
     print("1) Color Balance")
     print("2) Green Screen Matting")
     print("3) Photo Effects")
+<<<<<<< HEAD
     print("4) Histogram equalization")
+=======
+    print("4) Histogram Equalization")
+>>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
     print("5) Image Resampling")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -30,7 +41,11 @@ def menu():
             photo_effects()
             break
         elif opt == '4':
+<<<<<<< HEAD
             histo_equal()
+=======
+            histogram()
+>>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
             break
         elif opt == '5':
             resampling()
@@ -89,9 +104,6 @@ def simplest_cb(img, percent_list):
     return cv2.merge(out_channels)
 
 def pixeldiff():
-
-    img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
-    img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
     diff = cv2.absdiff(img1, img2)
     mask = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
 
@@ -191,6 +203,17 @@ def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
 def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
+<<<<<<< HEAD
+=======
+def histogram():
+    gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+    equalized = cv2.equalizeHist(gray)
+
+    cv2.imshow('Gray', gray)
+    cv2.imshow('Histogram', equalized)
+    cv2.waitKey(0)
+
+>>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
 def resampling():
     print("Elija una opción: ")
     print("1) Interpolación")
@@ -223,10 +246,13 @@ def interpolation():
     cv2.imshow('Bicubic', bicubic_img)
     cv2.waitKey(0)
 
+<<<<<<< HEAD
 def histo_equal():
     equ = cv2.equalizeHist(img)
     res = np.hstack((img,equ)) 
     cv2.imshow('Histogram equal', res)
     cv2.waitKey(0)
 
+=======
+>>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
 menu()
