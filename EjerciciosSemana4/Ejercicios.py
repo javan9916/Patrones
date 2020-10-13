@@ -3,12 +3,8 @@ from PIL import Image, ImageOps
 import math
 import numpy as np
 
-<<<<<<< HEAD
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
-=======
-img = cv2.imread("EjerciciosSemana4\\2image1.jpg")
->>>>>>> 7a96fd24e992a3f2943f09f4cfe3ddffa44684d2
 
 def menu():
     print("------ Ejercicios ------")
@@ -16,6 +12,7 @@ def menu():
     print("1) Color Balance")
     print("2) Green Screen Matting")
     print("3) Photo Effects")
+    print("4) Histogram equalization")
     print("5) Image Resampling")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -31,6 +28,9 @@ def menu():
             break
         elif opt == '3':
             photo_effects()
+            break
+        elif opt == '4':
+            histo_equal()
             break
         elif opt == '5':
             resampling()
@@ -104,6 +104,7 @@ def pixeldiff():
     cv2.imshow("Difference", canvas)
     cv2.waitKey(0)
     return
+
 def color_balance():
     print("Inserte los porcentajes de cada color: ")
 
@@ -190,12 +191,6 @@ def apply_brightness_contrast(input_img, brightness = 255, contrast = 127):
 def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
-<<<<<<< HEAD
-def histogram():
-    equ = cv.equalizeHist(img)
-    
-    cv2.imshow('Histogram', equ)
-=======
 def resampling():
     print("Elija una opción: ")
     print("1) Interpolación")
@@ -228,5 +223,10 @@ def interpolation():
     cv2.imshow('Bicubic', bicubic_img)
     cv2.waitKey(0)
 
->>>>>>> 7b9631ab61bc3d6b0c1cb1c0e8a126745b3210cb
+def histo_equal():
+    equ = cv2.equalizeHist(img)
+    res = np.hstack((img,equ)) 
+    cv2.imshow('Histogram equal', res)
+    cv2.waitKey(0)
+
 menu()
