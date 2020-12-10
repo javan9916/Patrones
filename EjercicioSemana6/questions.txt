@@ -1,0 +1,37 @@
+1. What is Keras compared to TensorFlow, and what is its purpose?
+|-------------------------------------------------------------------------------------------------------|
+|	Keras was designed as an interface to enable fast experimentation with neural networks.		|	
+|	As such, it was relying on TensorFlow or Theano (deprecated nowadays) to run deep learning	|
+|	operations. So compared to TensorFlow it is a user-friendly library for TensorFlow.		|
+|-------------------------------------------------------------------------------------------------------|
+2. Why does TensorFlow use graphs, and how do you create them manually?
+|-----------------------------------------------------------------------------------------------------------------------|
+|	It allows TensorFlow to:											|
+|		- Run part of the operations on the CPU and another part on the GPU.					|
+|		- Run different parts of the graphs on different machines in the case of a distributed model.		|
+|		- Optimize the graph to avoid unnecessary operations, leading to computational performance.		|
+|	In TensorFlow 2, graph creation is no longer handled by the user. While managing graphs used to be a complex	|
+|	task in TensorFlow 1. So if you want to create them manually you got to use TensorFlow 1.			|
+|-----------------------------------------------------------------------------------------------------------------------|
+3. What is the difference between eager execution mode and lazy execution mode?
+|-------------------------------------------------------------------------------------------------------|
+|	The lazy operation mode is used by default in TensorFlow 1, it is called lazy because		|
+|	operations are not run by the framework	until asked specifically, instead, eager execution	|
+|	mode is used by default in TensorFlow 2, and evaluates operations immediately, it makes		|
+|	code easier to debug and easier to develop too. 						|
+|-------------------------------------------------------------------------------------------------------|
+4. How do you log information in TensorBoard, and how do you display it?
+|-------------------------------------------------------------------------------------------------------------------------|
+|	In order to log information insto the TensorBoard, a parameter for monitoring is defined, it can be any of the    |
+|	model's qualities that the programmer wishes to display. Depending on the type of data that will be logged, the   |
+|	the specific function used to add it to the TensorBoard may change. TensorFlow itself handles the logging of data |
+|	once the parameter has been set.										  |
+|	When displaying the data, TensorFlow will crate a graph that will show the specefied values over time.		  |
+|-------------------------------------------------------------------------------------------------------------------------|
+5. What are the main differences between TensorFlow 1 and TensorFlow 2?
+|-------------------------------------------------------------------------------------------------------------------------|
+|	TensorFlow 2 includes many ease of life updates. Some examples are: Eager Excecution (creating and excecuting     |
+|	the model in the same batch), framwork simplification (many features where optimized and simplified to make the   |
+|	framwork more accesible), graph creation was simplified, useful functions such a AutoGraph were introduced        |
+|	and several other improvements were made.									  |
+|-------------------------------------------------------------------------------------------------------------------------|
