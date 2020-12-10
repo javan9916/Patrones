@@ -81,3 +81,10 @@ Mediante la funcion GaussianBlur() de OpenCV se realiza un difuminado gaussiano 
 
     blurred = cv2.GaussianBlur(fruta, (blur, blur), 0)
 ```
+<<<<<<< HEAD
+=======
+
+
+## Infografía Perceptron
+![InforPercep](https://cdn.discordapp.com/attachments/708362688014844008/772969360636772372/InfografiaPatronesPerceptor.png)
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742

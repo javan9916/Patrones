@@ -4,14 +4,20 @@ import math
 import numpy as np
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
 =======
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 apple = cv2.imread("EjerciciosSemana4\\apple.PNG")
 img = cv2.imread("EjerciciosSemana4\\image1.jpg")
 img1 = cv2.imread("EjerciciosSemana4\\verdeVacio.png")
 img2 = cv2.imread("EjerciciosSemana4\\verdeMano.png")
+<<<<<<< HEAD
 >>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 
 def menu():
     print("------ Ejercicios ------")
@@ -20,10 +26,14 @@ def menu():
     print("2) Green Screen Matting")
     print("3) Photo Effects")
 <<<<<<< HEAD
+<<<<<<< HEAD
     print("4) Histogram equalization")
 =======
     print("4) Histogram Equalization")
 >>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
+=======
+    print("4) Histogram equalization")
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
     print("5) Image Resampling")
     print("0) Salir")
     print("---------------------------------------------------")
@@ -42,10 +52,14 @@ def menu():
             break
         elif opt == '4':
 <<<<<<< HEAD
+<<<<<<< HEAD
             histo_equal()
 =======
             histogram()
 >>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
+=======
+            histo_equal()
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
             break
         elif opt == '5':
             resampling()
@@ -204,7 +218,10 @@ def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 def histogram():
     gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
     equalized = cv2.equalizeHist(gray)
@@ -213,7 +230,10 @@ def histogram():
     cv2.imshow('Histogram', equalized)
     cv2.waitKey(0)
 
+<<<<<<< HEAD
 >>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 def resampling():
     print("Elija una opción: ")
     print("1) Interpolación")
@@ -247,12 +267,18 @@ def interpolation():
     cv2.waitKey(0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 def histo_equal():
     equ = cv2.equalizeHist(img)
     res = np.hstack((img,equ)) 
     cv2.imshow('Histogram equal', res)
     cv2.waitKey(0)
 
+<<<<<<< HEAD
 =======
 >>>>>>> d88c8aebcc0cb8fbfd05de402e8eb8fc6ff614d3
+=======
+>>>>>>> 664176f74d42470d957753981d9f2ee718a02742
 menu()
